@@ -20,30 +20,11 @@ export class LocationsService {
 
   async findAll() {
     try {
-      const rawData = await this.locationRepository
-        .createQueryBuilder('location')
-        .leftJoin('location.temperatures', 'temperature')
-        .select([
-          'DATE(temperature.createdAt) AS time',
-          'location.name AS location',
-          'array_agg(temperature.value) AS values',
-        ])
-        .groupBy('time, location.name')
-        .orderBy('time', 'ASC')
-        .getRawMany();
+      const locations = await this.locationRepository.find({
+        relations: ['traffics'],
+      });
 
-      // Transform to the required JSON structure
-      const groupedData = rawData.reduce((acc, row) => {
-        let entry = acc.find((item) => item.time === row.time);
-        if (!entry) {
-          entry = { time: row.time };
-          acc.push(entry);
-        }
-        entry[row.location] = row.values[0]; // Extract first value
-        return acc;
-      }, []);
-
-      return response('Fetched Locations', groupedData, true);
+      return response('Fetched Locations', locations, true);
     } catch (error) {
       handleException(error, error.message);
     }

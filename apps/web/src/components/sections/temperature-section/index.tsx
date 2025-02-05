@@ -10,25 +10,27 @@ export async function TemperatureSection() {
   const avg = await getAvgTemp();
 
   return (
-    <Container className="py-20 px-10">
-      <div className="flex flex-col md:flex-row items-center gap-4 justify-center mb-10">
-        <StatisticCard title="Highest Temperature" description="Highest weekly temperature">
-          <h2 className="text-3xl font-semibold text-red-600">{max?.value}&deg;C</h2>
-          <p className="mt-2 text-sm text-slate-700">
-            on {max?.location.name}, {new Date(max?.createdAt ?? "").toLocaleDateString()}
-          </p>
-        </StatisticCard>
-        <StatisticCard title="Lowest Temperature" description="Lowest weekly temperature">
-          <h2 className="text-3xl font-semibold text-blue-600">{min?.value}&deg;C</h2>
-          <p className="mt-2 text-sm text-slate-700">
-            on {min?.location.name}, {new Date(min?.createdAt ?? "").toLocaleDateString()}
-          </p>
-        </StatisticCard>
-        <StatisticCard title="Average Temperature" description="Average weekly temperature">
-          <h2 className="text-3xl font-semibold">{avg.avg}&deg;C</h2>
-        </StatisticCard>
-      </div>
-      <TemperatureChart data={reports.data} />
-    </Container>
+    <section className="py-20 px-10">
+      <Container>
+        <div className="flex flex-col md:flex-row items-center gap-4 justify-center mb-10">
+          <StatisticCard title="Highest Temperature" description="Highest weekly temperature">
+            <h2 className="text-3xl font-semibold text-red-600">{max?.value}&deg;C</h2>
+            <p className="mt-2 text-sm text-slate-700">
+              on {max?.location.name}, {new Date(max?.createdAt ?? "").toLocaleDateString()}
+            </p>
+          </StatisticCard>
+          <StatisticCard title="Lowest Temperature" description="Lowest weekly temperature">
+            <h2 className="text-3xl font-semibold text-blue-600">{min?.value}&deg;C</h2>
+            <p className="mt-2 text-sm text-slate-700">
+              on {min?.location.name}, {new Date(min?.createdAt ?? "").toLocaleDateString()}
+            </p>
+          </StatisticCard>
+          <StatisticCard title="Average Temperature" description="Average weekly temperature">
+            <h2 className="text-3xl font-semibold">{avg.avg}&deg;C</h2>
+          </StatisticCard>
+        </div>
+        <TemperatureChart data={reports.data} />
+      </Container>
+    </section>
   );
 }

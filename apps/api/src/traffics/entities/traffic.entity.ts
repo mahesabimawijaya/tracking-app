@@ -15,6 +15,9 @@ export class Traffic {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column({ nullable: true })
+  name: string;
+
   @Column()
   status: string;
 

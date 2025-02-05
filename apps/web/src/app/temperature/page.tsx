@@ -1,11 +1,9 @@
 import { TemperatureSection } from "@/components/sections/temperature-section";
-import TrafficSection from "@/components/sections/traffic-section";
 
-export default function Home() {
+export default function Temperature() {
   return (
     <main>
       <TemperatureSection />
-      <TrafficSection />
     </main>
   );
 }

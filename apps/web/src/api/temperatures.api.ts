@@ -1,9 +1,9 @@
 import { Temperature } from "@/interface/temperature";
+import api from "@/lib/axios";
 
 export async function getTempReports() {
   try {
-    const res = await fetch("http://localhost:8000/temperatures");
-    const data = await res.json();
+    const { data } = await api.get("/temperatures");
     return data;
   } catch (error) {
     console.error(error);
@@ -12,8 +12,7 @@ export async function getTempReports() {
 
 export async function getHighestTemp() {
   try {
-    const res = await fetch("http://localhost:8000/temperatures/max");
-    const data = await res.json();
+    const { data } = await api.get("/temperatures/max");
     return data.data as Temperature;
   } catch (error) {
     console.error(error);
@@ -22,8 +21,7 @@ export async function getHighestTemp() {
 
 export async function getLowestTemp() {
   try {
-    const res = await fetch("http://localhost:8000/temperatures/min");
-    const data = await res.json();
+    const { data } = await api.get("/temperatures/min");
     return data.data as Temperature;
   } catch (error) {
     console.error(error);
@@ -32,8 +30,7 @@ export async function getLowestTemp() {
 
 export async function getAvgTemp() {
   try {
-    const res = await fetch("http://localhost:8000/temperatures/avg");
-    const data = await res.json();
+    const { data } = await api.get("/temperatures/avg");
     return data.data;
   } catch (error) {
     console.error(error);

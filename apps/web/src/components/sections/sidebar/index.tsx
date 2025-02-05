@@ -10,12 +10,12 @@ const items = [
   },
   {
     title: "Traffic Light",
-    url: "#",
+    url: "/traffic",
     icon: AlignEndVertical,
   },
   {
     title: "Temperature",
-    url: "#",
+    url: "/temperature",
     icon: ThermometerSun,
   },
 ];
@@ -28,7 +28,7 @@ const SidebarSection: FC = () => {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
