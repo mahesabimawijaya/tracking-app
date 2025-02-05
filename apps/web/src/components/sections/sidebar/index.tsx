@@ -24,7 +24,7 @@ const SidebarSection: FC = () => {
   return (
     <Sidebar>
       <SidebarHeader>
-        <h1 className="text-blue-600 text-3xl font-semibold mx-auto mt-2">Tracking App</h1>
+        <h1 className="text-blue-600 text-3xl font-semibold mx-auto mt-2">Tracker App</h1>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
